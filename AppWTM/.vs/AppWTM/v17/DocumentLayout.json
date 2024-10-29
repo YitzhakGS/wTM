@@ -1,12 +1,53 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\Admin\\source\\repos\\AppWTM\\",
-  "Documents": [],
+  "WorkspaceRootPath": "C:\\Users\\Admin\\source\\repos\\proyecto_web_Tickets\\AppWTM\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{79B5CF93-E58D-4151-A778-444FC2074EA6}|AppWTM\\AppWTM.csproj|c:\\users\\admin\\source\\repos\\proyecto_web_tickets\\appwtm\\appwtm\\web.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "RelativeMoniker": "D:0:0:{79B5CF93-E58D-4151-A778-444FC2074EA6}|AppWTM\\AppWTM.csproj|solutionrelative:appwtm\\web.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{79B5CF93-E58D-4151-A778-444FC2074EA6}|AppWTM\\AppWTM.csproj|C:\\Users\\Admin\\source\\repos\\proyecto_web_Tickets\\AppWTM\\appwtm\\model\\managerbd.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{79B5CF93-E58D-4151-A778-444FC2074EA6}|AppWTM\\AppWTM.csproj|solutionrelative:appwtm\\model\\managerbd.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": []
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ManagerBD.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\proyecto_web_Tickets\\AppWTM\\AppWTM\\Model\\ManagerBD.cs",
+              "RelativeDocumentMoniker": "AppWTM\\Model\\ManagerBD.cs",
+              "ToolTip": "C:\\Users\\Admin\\source\\repos\\proyecto_web_Tickets\\AppWTM\\AppWTM\\Model\\ManagerBD.cs",
+              "RelativeToolTip": "AppWTM\\Model\\ManagerBD.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-29T10:32:32.478Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Web.config",
+              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\proyecto_web_Tickets\\AppWTM\\AppWTM\\Web.config",
+              "RelativeDocumentMoniker": "AppWTM\\Web.config",
+              "ToolTip": "C:\\Users\\Admin\\source\\repos\\proyecto_web_Tickets\\AppWTM\\AppWTM\\Web.config",
+              "RelativeToolTip": "AppWTM\\Web.config",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAC0AAABmAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
+              "WhenOpened": "2024-10-29T10:05:45.152Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
     }
   ]
 }

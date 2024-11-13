@@ -178,6 +178,7 @@
     <Content Include="Scripts\WebForms\WebParts.js" />
     <Content Include="Scripts\WebForms\WebUIValidation.js" />
     <Content Include="Site.Master" />
+    <Content Include="Tickets.aspx" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config" />
     <Content Include="Bundle.config" />
@@ -219,7 +220,14 @@
     </Compile>
     <Compile Include="Model\CUsuario.cs" />
     <Compile Include="Model\ManagerBD.cs" />
+
+    <Compile Include="Model\WTickets.cs" />
+    <Compile Include="Presenter\CTickets.cs" />
+    <Compile Include="Presenter\EPrioridadTicket.cs" />
+    <Compile Include="Presenter\EStatusTicket.cs" />
+
     <Compile Include="Presenter\WUsuario.cs" />
+
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
@@ -234,6 +242,13 @@
     </Compile>
     <Compile Include="Site.Mobile.Master.designer.cs">
       <DependentUpon>Site.Mobile.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Tickets.aspx.cs">
+      <DependentUpon>Tickets.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Tickets.aspx.designer.cs">
+      <DependentUpon>Tickets.aspx</DependentUpon>
     </Compile>
     <Compile Include="ViewSwitcher.ascx.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>

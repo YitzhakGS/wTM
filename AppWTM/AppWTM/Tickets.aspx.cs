@@ -27,7 +27,7 @@ namespace AppWTM
         private void listarDepartamentos()
         {
             DataSet ds = objTicket.listarDepartamentos(); //lo correcto seria crear una clase y otra tabla para las empresas y traer el objeto para mandar el dato de que empresa se quieren los departamentos, asi como cambiar los SP
-            if (ds.Tables[0].Rows.Count > 0)
+            if (ds.Tables[0].Rows.Count >= 0)
             {
                 ddlArea.DataSource = ds;
                 ddlArea.DataValueField = "Id_Departamento";
@@ -55,14 +55,30 @@ namespace AppWTM
                 CUsuario usuario = (CUsuario)Session["UsuarioLog"];
                 CTickets ticket = new CTickets
                 {
-                    fkUsuario = usuario.Id_Usuario,
+                    fkUsuario = usuario.pkUsuario,
                     Ticket_Titulo = txtTitulo.Text,
                     Tick_Descripcion = txtDescripcion.Text,
-                    fkPrioridad = usuario.fkPrioridad,
-                    fkEstado = (int)EStatusTicket.Activo
+                    fkEstado = (int)EStatusTicket.Activo,
                 };
+                if (objTicket.InsertarTickets(ticket))
+                {
+                    listarTickets();
+                    ScriptManager.RegisterStartupScript(this, GetType(), "TicketEnviado", "Swal.fire({ title: 'Ticket Enviado', text: 'Tu solicitud ha sido enviada exitosamente', icon: 'success', confirmButtonText: 'Aceptar' });", true);
+                }
             };
             
+        }
+
+        protected void btnCancelar_Click(object sender, EventArgs e)
+        {
+            txtTitulo.Text = "";
+            ddlArea.SelectedIndex = 0;
+            //ddlPrioridad.SelectedIndex = 0;
+            txtDescripcion.Text = "";
+
+            // Un mensaje de cancelación, seria mas el de confirmacion pero ando viendo si necesito la base o no
+            ScriptManager.RegisterStartupScript(this, GetType(), "TicketCancelado", "Swal.fire({ title: 'Ticket Cancelado', text: 'Has cancelado la creación del ticket.', icon: 'info', confirmButtonText: 'Aceptar' });", true);
+
         }
     }
 }

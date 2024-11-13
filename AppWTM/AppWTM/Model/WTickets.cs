@@ -23,8 +23,8 @@ namespace AppWTM.Model
             DataSet ds = new DataSet();
             List<SqlParameter> listParameters = new List<SqlParameter>();
             listParameters.Add(new SqlParameter("opcion", 2));
-            listParameters.Add(new SqlParameter("@id_Usuario", cUsuario.idUsuario));
-            listParameters.Add(new SqlParameter("@Rol", cUsuario.fkRol));
+            listParameters.Add(new SqlParameter("@id_Usuario", usuario.pkUsuario));
+            listParameters.Add(new SqlParameter("@Rol", usuario.fkRol));
             ds = objManagerBD.GetData("spuTickets", listParameters.ToArray());
 
             return ds;

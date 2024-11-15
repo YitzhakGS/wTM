@@ -80,5 +80,23 @@ namespace AppWTM.Presenter
             eliminado = managerBD.UpdateData("spuUsuarios", listParameter.ToArray());
             return eliminado;
         }
+
+        public bool UpdateUsuario(CUsuario usuario)
+        {
+            bool actualizado = false;
+            List<SqlParameter> listParameter = new List<SqlParameter>();
+            listParameter.Add(new SqlParameter("@opcion", 3));
+            listParameter.Add(new SqlParameter("@Id_Usuario", usuario.pkUsuario));
+            listParameter.Add(new SqlParameter("@Usu_Nombre", usuario.nombre));
+            listParameter.Add(new SqlParameter("@Usu_Apellidos", usuario.apellidos));
+            listParameter.Add(new SqlParameter("@Usu_Email", usuario.correo));
+            listParameter.Add(new SqlParameter("@Usu_Password", usuario.password));
+            listParameter.Add(new SqlParameter("@Usu_Telefono", usuario.telefono));
+            listParameter.Add(new SqlParameter("@fkEmpresa ", 1));
+            listParameter.Add(new SqlParameter("@fkRol", 1));
+            listParameter.Add(new SqlParameter("@Usu_Status", usuario.status));
+            actualizado = managerBD.UpdateData("spuUsuarios", listParameter.ToArray());
+            return actualizado;
+        }
     }
 }

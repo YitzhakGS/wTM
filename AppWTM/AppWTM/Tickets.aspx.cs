@@ -19,7 +19,16 @@ namespace AppWTM
             objTicket = new WTickets();
             if (!IsPostBack)
             {
-                listarTickets();
+                if (Session["UsuarioLog"] == null)
+                {
+                    CUsuario usuario = new CUsuario
+                    {
+                        pkUsuario = 4, // Asignar el ID de usuario 5
+                        fkRol = 3,       // Puedes asignar otros valores necesarios al objeto usuario aquí
+                    };
+                    Session["UsuarioLog"] = usuario;
+                }
+                MostrarTickets();
                 listarDepartamentos();
             }
         }
@@ -37,7 +46,7 @@ namespace AppWTM
             };
         }
 
-        private void listarTickets()
+        private void MostrarTickets()
         {
             if (Session["UsuarioLog"] != null)
             {
@@ -59,10 +68,11 @@ namespace AppWTM
                     Ticket_Titulo = txtTitulo.Text,
                     Tick_Descripcion = txtDescripcion.Text,
                     fkEstado = (int)EStatusTicket.Activo,
+                    fkArea = ddlArea.SelectedIndex,
                 };
                 if (objTicket.InsertarTickets(ticket))
                 {
-                    listarTickets();
+                    MostrarTickets();
                     ScriptManager.RegisterStartupScript(this, GetType(), "TicketEnviado", "Swal.fire({ title: 'Ticket Enviado', text: 'Tu solicitud ha sido enviada exitosamente', icon: 'success', confirmButtonText: 'Aceptar' });", true);
                 }
             };

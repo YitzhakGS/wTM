@@ -1,4 +1,5 @@
-﻿using AppWTM.Presenter;
+﻿using AppWTM.Model;
+using AppWTM.Presenter;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -25,10 +26,9 @@ namespace AppWTM
         private void ListUsuarios()
         {
             DataSet ds = wUsuario.ListDatos(2);
-            grdListDenuncias.DataSource = ds;
-            grdListDenuncias.DataBind(); //Esto hace el enlace
+            grdListUsuarios.DataSource = ds;
+            grdListUsuarios.DataBind(); //Esto hace el enlace
         }
-
 
         protected void grdDenuncias_RowCommand(object sender, GridViewCommandEventArgs e)
         {
@@ -62,13 +62,18 @@ namespace AppWTM
             }
             else if (e.CommandName == "editar")
             {
-                //pkDenuncia = Convert.ToInt32(row.Cells[2].Text);
-                //txtFechaSuceso.Text = Convert.ToDateTime(row.Cells[3].Text).ToString("yyyy-MM-dd HH:mm:ss");
-                //drpDelitos.SelectedIndex = Convert.ToInt32(row.Cells[6].Text);
-                //txtDescripcion.Text = row.Cells[4].Text;
-                //btnCancel.Visible = true;
-                //esActualizar = true;
-                //btnEnviar.Text = "Actualizar";
+                lblActualizar.Visible = true;
+                lblRegistrar.Visible = false;
+                pkUsuario = Convert.ToInt32(row.Cells[2].Text);
+                txtNombre.Text = row.Cells[3].Text;
+                txtApellidos.Text = row.Cells[4].Text;
+                txtEmail.Text = row.Cells[5].Text;
+                txtPassword.Text = row.Cells[6].Text;
+                txtTelefono.Text = row.Cells[7].Text;
+                drpArea.SelectedValue = row.Cells[10].Text;
+                btnActualizar.Visible = true;
+                btnEnviar.Visible = false;
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "showModal", "setTimeout(AbrirModal, 0);", true);
             }
         }
 
@@ -92,5 +97,78 @@ namespace AppWTM
 
             }
         }
+        protected void btnRegistrar_Click(object sender, EventArgs e)
+        {
+            CUsuario nuevo = new CUsuario();
+            nuevo.nombre = txtNombre.Text;
+            nuevo.apellidos = txtApellidos.Text;
+            nuevo.telefono = txtTelefono.Text;
+            nuevo.correo = txtEmail.Text;
+            nuevo.password = txtPassword.Text;
+            nuevo.status = drpArea.SelectedValue;
+
+            if (wUsuario.RegistrarUsuario(nuevo))
+            {
+                ClientScript.RegisterStartupScript(this.GetType(), "Alert", "<script>Swal.fire({ title: 'Registrado', text: 'Registro exitoso!', icon: 'success' });</script>");
+                Limpiar();
+                ListUsuarios();
+            }
+            else
+            {
+                Response.Write("<script>alert('Error al registrar la denuncia')</script>");
+            }
+        }
+
+        protected void Limpiar()
+        {
+            txtNombre.Text = string.Empty;
+            txtApellidos.Text = string.Empty;
+            txtTelefono.Text = string.Empty;
+            txtEmail.Text = string.Empty;
+            txtPassword.Text = string.Empty;
+        }
+
+        protected void btnCancel_Click(object sender, EventArgs e)
+        {
+            btnEnviar.Visible = true;
+            btnActualizar.Visible = false;
+            lblActualizar.Visible = false;
+            lblRegistrar.Visible = true;
+        }
+
+        protected void btnRegModal_Click(object sender, EventArgs e)
+        {
+            Limpiar();
+            btnEnviar.Visible = true;
+            btnActualizar.Visible = false;
+            lblActualizar.Visible = false;
+            lblRegistrar.Visible = true;
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "showModal", "setTimeout(AbrirModal, 0);", true);
+        }
+
+        protected void btnActualizar_Click(object sender, EventArgs e)
+        {
+            CUsuario nuevo = new CUsuario();
+            nuevo.pkUsuario = pkUsuario;
+            nuevo.nombre = txtNombre.Text;
+            nuevo.apellidos = txtApellidos.Text;
+            nuevo.telefono = txtTelefono.Text;
+            nuevo.correo = txtEmail.Text;
+            nuevo.password = txtPassword.Text;
+            nuevo.status = drpArea.SelectedValue;
+
+            if (wUsuario.UpdateUsuario(nuevo))
+            {
+                ClientScript.RegisterStartupScript(this.GetType(), "Alert", "<script>Swal.fire({ title: 'Actualizado', text: 'Registro actualizado!', icon: 'success' });</script>");
+                ListUsuarios();
+            }
+            else
+            {
+                Response.Write("<script>alert('Error al actualizar el usuario')</script>");
+            }
+            Limpiar();
+        }
+
+        
     }
 }

@@ -2,3 +2,16 @@ AppWTM/AppWTM/bin/
 AppWTM/AppWTM/obj/
 AppWTM/.vs/
 AppWTM/AppWTM/Web.config
+
+# Archivos temporales y de configuración de Visual Studio
+.vs/
+*.suo
+bin/
+obj/
+*.cache
+*.dll
+*.pdb
+
+# Otros archivos generados automáticamente
+*.user
+*.csproj.user

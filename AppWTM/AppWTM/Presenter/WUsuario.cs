@@ -44,9 +44,9 @@ namespace AppWTM.Presenter
             listParameter.Add(new SqlParameter("@Usu_Password", nuevo.password));
             listParameter.Add(new SqlParameter("@Usu_Telefono", nuevo.telefono));
             listParameter.Add(new SqlParameter("@fkEmpresa ", 1));
-            listParameter.Add(new SqlParameter("@fkRol", 1));
+            listParameter.Add(new SqlParameter("@fkRol", nuevo.fkRol));
             listParameter.Add(new SqlParameter("@Usu_Status", nuevo.status));
-
+            listParameter.Add(new SqlParameter("@fkArea", nuevo.fkArea));
             registrado = managerBD.UpdateData("spuUsuarios", listParameter.ToArray());
             return registrado;
         }
@@ -93,10 +93,20 @@ namespace AppWTM.Presenter
             listParameter.Add(new SqlParameter("@Usu_Password", usuario.password));
             listParameter.Add(new SqlParameter("@Usu_Telefono", usuario.telefono));
             listParameter.Add(new SqlParameter("@fkEmpresa ", 1));
-            listParameter.Add(new SqlParameter("@fkRol", 1));
+            listParameter.Add(new SqlParameter("@fkRol", usuario.fkRol));
             listParameter.Add(new SqlParameter("@Usu_Status", usuario.status));
+            listParameter.Add(new SqlParameter("@fkArea", usuario.fkArea));
             actualizado = managerBD.UpdateData("spuUsuarios", listParameter.ToArray());
             return actualizado;
+        }
+
+        public DataSet ListAreas(int opcion)
+        {
+            DataSet ds = new DataSet();
+            List<SqlParameter> listParameter = new List<SqlParameter>();
+            listParameter.Add(new SqlParameter("@opcion", opcion));
+            ds = managerBD.GetData("spuDepartamentos", listParameter.ToArray());
+            return ds;
         }
     }
 }

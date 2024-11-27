@@ -18,5 +18,7 @@ namespace AppWTM.Model
         public string fecha { get; set; }
         public int fkRol { get; set; }
         public string status { get; set; }
+        public int fkPrioridad { get; set; }
+        public int fkArea { get; set; }
     }
 }

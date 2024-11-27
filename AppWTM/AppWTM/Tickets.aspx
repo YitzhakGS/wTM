@@ -3,19 +3,22 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-dark/dark.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
 
-    <div>
-        <div>
-            <asp:Label ID="lblMisTickets" runat="server" Text="Mis Tickets"></asp:Label>
-            <div>
-                <asp:GridView ID="dgrTickets" runat="server"></asp:GridView>
+    <div class="container mt-4">
+    <div class="row">
+        <!-- Columna del DataGrid -->
+        <div class="col-md-8">
+            <asp:Label ID="lblMisTickets" runat="server" Text="Mis Tickets" CssClass="h4 mb-3 d-block"></asp:Label>
+            <div class="table-responsive">
+                <asp:GridView ID="dgrTickets" runat="server" CssClass="table table-hover"></asp:GridView>
             </div>
         </div>
-        <div> 
-            <div class="text-center mt-4">
-                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#crearTicketModal">Crear Ticket</button>
-            </div>
+
+        <!-- Columna del Botón -->
+        <div class="col-md-4 d-flex align-items-start justify-content-center">
+            <button type="button" class="btn btn-primary mt-2 w-75" data-bs-toggle="modal" data-bs-target="#crearTicketModal">Crear Ticket</button>
         </div>
     </div>
+</div>
 
     <div class="modal fade" id="crearTicketModal" tabindex="-1" aria-labelledby="crearTicketModalLabel" aria-hidden="true">
         <div class="modal-dialog <%--modal-lg--%>" style="max-width: 45%;">
@@ -32,8 +35,7 @@
                                 <div class="col-lg-12 mx-auto">
                                     <div>
                                         <div class="card-header text-black text-center">
-                                            <h2>Crear Nuevo Ticket</h2>
-                                            <`1h5>Envíe una nueva solicitud</`1h5>
+                                            <h4>Envíe una nueva solicitud</h4>
                                         </div>
                                         <div class="card-body row mt-1">
                                             <div class="col-12 mb-2">

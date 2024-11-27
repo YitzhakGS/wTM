@@ -23,7 +23,7 @@ namespace AppWTM.Model
             DataSet ds = new DataSet();
             List<SqlParameter> listParameters = new List<SqlParameter>();
             listParameters.Add(new SqlParameter("opcion", 2));
-            listParameters.Add(new SqlParameter("@id_Usuario", usuario.pkUsuario));
+            listParameters.Add(new SqlParameter("@idUsuario", usuario.pkUsuario));
             listParameters.Add(new SqlParameter("@Rol", usuario.fkRol));
             ds = objManagerBD.GetData("spuTickets", listParameters.ToArray());
 
@@ -50,7 +50,7 @@ namespace AppWTM.Model
             listParameters.Add(new SqlParameter("@opcion", 1));
             listParameters.Add(new SqlParameter("@fkUsuario", cTickets.fkUsuario));
             listParameters.Add(new SqlParameter("@Tick_Titulo", cTickets.Ticket_Titulo));
-            listParameters.Add(new SqlParameter("@fkPrioridad", cTickets.fkPrioridad));
+            //listParameters.Add(new SqlParameter("@fkPrioridad", cTickets.fkPrioridad));
             listParameters.Add(new SqlParameter("@Tick_Descripcion", cTickets.Tick_Descripcion));
             listParameters.Add(new SqlParameter("@fkEstado", cTickets.fkEstado));
 
@@ -67,6 +67,20 @@ namespace AppWTM.Model
             listParameters.Add(new SqlParameter("@Id_Ticket", cTickets.Id_Ticket));
             eliminado = objManagerBD.UpdateData("spuTickets", listParameters.ToArray());
             return eliminado;
+        }
+
+        public bool ActualizarEstado(CTickets cTickets)
+        {
+            bool actualizado = false;
+            List<SqlParameter> listParameters = new List<SqlParameter>();
+            listParameters.Add(new SqlParameter("@opcion", 1));
+            listParameters.Add(new SqlParameter("@Id_Ticket", cTickets.Id_Ticket));
+            listParameters.Add(new SqlParameter("@fkEstado", cTickets.fkEstado));
+            listParameters.Add(new SqlParameter("@fkDepartamento", cTickets.fkDepartamento));
+            listParameters.Add(new SqlParameter("@fkPrioridad", cTickets.fkPrioridad));
+            actualizado = objManagerBD.UpdateData("spuTickets", listParameters.ToArray());
+
+            return actualizado;
         }
 
     }

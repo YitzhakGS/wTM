@@ -228,10 +228,12 @@
     </Compile>
     <Compile Include="Model\CUsuario.cs" />
     <Compile Include="Model\ManagerBD.cs" />
-    <Compile Include="Model\WTickets.cs" />
-    <Compile Include="Presenter\CTickets.cs" />
-    <Compile Include="Presenter\EPrioridadTicket.cs" />
-    <Compile Include="Presenter\EStatusTicket.cs" />
+
+    <Compile Include="Presenter\WTickets.cs" />
+    <Compile Include="Model\CTickets.cs" />
+    <Compile Include="Model\EPrioridadTicket.cs" />
+    <Compile Include="Model\EStatusTicket.cs" />
+
     <Compile Include="Presenter\WUsuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Site.Master.cs">
